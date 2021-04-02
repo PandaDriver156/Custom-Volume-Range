@@ -1,0 +1,7 @@
+{
+  "name": "Custom Volume Range",
+  "version": "0.1.0",
+  "description": "Allows to set a user's volume over 200%",
+  "author": "PandaDriver#1584",
+  "license": "MIT"
+}
