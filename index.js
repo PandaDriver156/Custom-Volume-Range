@@ -9,7 +9,6 @@ let pluginSettings;
 
 module.exports = class CustomVolumeRange extends Plugin {
     startPlugin() {
-        this.defaultMaxVolume = defaultMaxVolume;
         pluginSettings = this.settings;
         this.adjustVolumeSlider();
         powercord.api.settings.registerSettings('custom-volume-range-settings', {
@@ -17,7 +16,7 @@ module.exports = class CustomVolumeRange extends Plugin {
             label: 'Custom Volume Range',
             render: props => React.createElement(Settings, {
                 ...props,
-                plugin: this
+                defaultMaxVolume
             })
         });
     }
@@ -26,7 +25,7 @@ module.exports = class CustomVolumeRange extends Plugin {
         const Slider = getModuleByDisplayName('Slider', false);
         inject('custom-volume-range', Slider.prototype, 'render', function (args) {
             // pluginSettings must be a separate variable because 'this' refers to the module we inject into
-            const maxVolume = pluginSettings.get('maxAdjustableVolume', this.defaultMaxVolume);
+            const maxVolume = pluginSettings.get('maxAdjustableVolume', defaultMaxVolume);
             // only change range if label is 'Input Volume'
             if (this && this.props['aria-label'] === Messages.FORM_LABEL_INPUT_VOLUME) {
                 this.props.maxValue = maxVolume;

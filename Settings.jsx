@@ -7,7 +7,7 @@ module.exports = class LargerVolumeRangeSettings extends React.Component {
     return (
       <TextInput
         note="Maximum adjustable volume on the volume slider"
-        defaultValue={getSetting("maxAdjustableVolume", this.props.plugin.defaultMaxVolume)}
+        defaultValue={getSetting("maxAdjustableVolume", this.props.defaultMaxVolume)}
         onChange={(value) =>
           !isNaN(value) ? updateSetting("maxAdjustableVolume", Number(value)) : null
         }
