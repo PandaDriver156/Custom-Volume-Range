@@ -39,6 +39,6 @@ module.exports = class CustomVolumeRange extends Plugin {
 
     pluginWillUnload() {
         uninject('custom-volume-range');
-        powercord.api.settigs.unregisterSettings('custom-volume-range-settings');
+        powercord.api.settings.unregisterSettings('custom-volume-range-settings');
     }
 };
