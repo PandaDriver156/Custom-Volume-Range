@@ -26,8 +26,8 @@ module.exports = class CustomVolumeRange extends Plugin {
         inject('custom-volume-range', Slider.prototype, 'render', function (args) {
             // pluginSettings must be a separate variable because 'this' refers to the module we inject into
             const maxVolume = pluginSettings.get('maxAdjustableVolume', defaultMaxVolume);
-            // only change range if label is 'Input Volume'
-            if (this && this.props['aria-label'] === Messages.FORM_LABEL_INPUT_VOLUME) {
+            // only change range if label is 'User volume'
+            if (this.props && this.props['aria-label'] === Messages.USER_VOLUME) {
                 this.props.maxValue = maxVolume;
                 this.state.value = this.state.initialValueProp;
                 this.state.max = maxVolume;
